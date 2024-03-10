@@ -189,30 +189,30 @@
 <div class="container">
     <div class="screen">
         <div class="screen__content">
-            <form class="login" id="signupForm" method="POST" action="/your-submit-url">
+            <form class="login" id="signupForm" method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="text" class="login__input" id="username" placeholder="User name / Email">
+                    <input type="text" name="username"    class="login__input" id="username" placeholder="User name">
                     <div id="usernameError" class="error-message"></div>
                 </div>
                 <div class="login__field">
-                    <i class="login__icon fas fa-lock"></i>
-                    <input type="password" class="login__input" id="password" placeholder="Password">
-<div id="passwordError" class="error-message"></div>
+                    <i class="login__icon fas fa-user"></i>
+                <input type="email" name="email" class="login__input" id="email" placeholder="Email">
+                <div id="usernameError" class="error-message"></div>
                 </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" name="password"    class="login__input" id="password" placeholder="Password">
+<div id="passwordError" class="error-message"></div>
+                 </div>
+                 
                 <button class="button login__submit">
                     <span class="button__text">Signup Now</span>
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
             </form>
-            <div class="social-login">
-                <h3>Signup via</h3>
-                <div class="social-icons">
-                    <a href="#" class="social-login__icon fab fa-instagram"></a>
-                    <a href="#" class="social-login__icon fab fa-facebook"></a>
-                    <a href="#" class="social-login__icon fab fa-twitter"></a>
-                </div>
-            </div>
+        
         </div>
         <div class="screen__background">
             <span class="screen__background__shape screen__background__shape4"></span>

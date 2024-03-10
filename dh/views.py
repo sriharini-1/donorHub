@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import DonationRequest
 from .forms import DonationRequestForm
-
+from django.contrib.auth.models import User, auth
 def index(request):
     # Add your view logic here
     return render(request, 'index.html')
@@ -26,21 +26,32 @@ def create_donation_request(request):
 def user_profile(request):
     # Add your user profile view logic here
     return render(request, 'user_profile.html')
+# views.py
+# views.py
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm
-from django.contrib.auth.models import User
 
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            # Create a new user account
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            User.objects.create_user(username=username, email=email, password=password)
-            # Redirect to login page or any other page
+            # Create a new user object but do not save yet
+            user = User.objects.create_user(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+            # Optionally, you can do additional operations like sending confirmation emails, etc.
+            # After that, redirect to login page or any other page
             return redirect('login')
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
+
+
+
+
+

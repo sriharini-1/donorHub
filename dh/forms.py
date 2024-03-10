@@ -9,5 +9,5 @@ class DonationRequestForm(forms.ModelForm):
         fields = ['organization', 'donation_type_requested', 'additional_details']
 class SignupForm(forms.Form):
     username = forms.CharField(max_length=100)
-    email = forms.EmailField()
+    email = forms.EmailField(max_length=254)
     password = forms.CharField(widget=forms.PasswordInput)
