@@ -46,7 +46,7 @@ def signup(request):
             )
             # Optionally, you can do additional operations like sending confirmation emails, etc.
             # After that, redirect to login page or any other page
-            return redirect('login')
+            return redirect('index')
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
